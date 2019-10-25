@@ -1,0 +1,14 @@
+{
+  "apps":[{
+      "name"        : "wedding-api",
+      "script"      : "index.js",
+      "exec_mode": "fork",
+      "log_date_format"  : "YYYY-MM-DD HH:mm +7",
+      "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+      "watch"       : false,
+      "env": {
+          "NODE_ENV": "dev",
+          "PORT": 9393
+      }
+  }]
+}

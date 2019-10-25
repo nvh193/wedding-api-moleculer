@@ -17,10 +17,14 @@ module.exports = {
 	 * Actions
 	 */
 	actions: {
-		fetch(ctx) {
-			return ctx.call("flickr.fetch", ctx.params);
+		fetch: {
+			cache: true,
+			handler(ctx) {
+				return ctx.call("flickr.fetch", ctx.params);
+			}
 		},
 		getPhotos: {
+			cache: true,
 			params: {
 				photoset_id: "string"
 			},

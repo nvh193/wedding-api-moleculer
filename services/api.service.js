@@ -29,11 +29,6 @@ module.exports = {
 					}
 				]
 			}
-		],
-
-		// Serve assets from "public" folder
-		assets: {
-			folder: "public"
-		}
+		]
 	}
 };
