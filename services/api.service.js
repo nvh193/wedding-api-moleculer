@@ -24,7 +24,8 @@ module.exports = {
 							// The `name` comes from named param.
 							// You can access it with `ctx.params.name` in action
 							"GET galleries": "gallery.fetch",
-							"GET gallery/:photoset_id": "gallery.getPhotos"
+							"GET galleries/getAll": "gallery.getAllPhotos",
+							"GET galleries/:photoset_id": "gallery.getPhotos"
 						}
 					}
 				]

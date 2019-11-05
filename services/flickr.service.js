@@ -41,6 +41,8 @@ module.exports = {
 		 * get detail a photoset
 		 *
 		 * @param {String} photoset_id - photoSet Id
+		 * @param {Number} limit - limit per page
+		 * @param {Number} page - page
 		 */
 		getPhotoSetDetail: {
 			params: {
@@ -48,6 +50,21 @@ module.exports = {
 			},
 			handler(ctx) {
 				return this.getPhotoSetDetail(ctx.params);
+			}
+		},
+		/**
+		 * get detail a photoset
+		 *
+		 * @param {Number} limit - limit per page
+		 * @param {Number} page - page
+		 */
+		getAllPhotos: {
+			params: {
+				// limit: 'numer',
+				// page: 'number'
+			},
+			handler(ctx) {
+				return this.getAllPhotos(ctx.params);
 			}
 		}
 	},
@@ -67,7 +84,7 @@ module.exports = {
 				sefl.flickr.photosets.getList(
 					{
 						user_id: sefl.settings.flickrOptions.userId,
-						primary_photo_extras: "url_o,url_m"
+						primary_photo_extras: "url_o,url_k"
 					},
 					function(err, result) {
 						if (err) {
@@ -85,13 +102,45 @@ module.exports = {
 					{
 						user_id: sefl.settings.flickrOptions.userId,
 						photoset_id: params.photoset_id,
-						extras: "url_o,url_m"
+						extras: "url_o,url_k",
+						page: parseInt(params.page) || 0,
+						per_page: parseInt(params.limit) || 20
 					},
 					function(err, result) {
 						if (err) {
 							return reject(err);
 						}
-						return resolve(result.photoset);
+						return resolve({
+							limit: result.photoset.perpage,
+							page: result.photoset.page,
+							total: result.photoset.total,
+							list: result.photoset.photo
+						});
+					}
+				);
+			});
+		},
+		getAllPhotos(params) {
+			console.log("TCL: getAllPhotos -> params", params);
+			const sefl = this;
+			return new Promise((resolve, reject) => {
+				sefl.flickr.photos.search(
+					{
+						user_id: sefl.settings.flickrOptions.userId,
+						extras: "url_o,url_k",
+						page: parseInt(params.page) || 0,
+						per_page: parseInt(params.limit) || 20
+					},
+					function(err, result) {
+						if (err) {
+							reject(err);
+						}
+						resolve({
+							limit: result.photos.perpage,
+							page: result.photos.page,
+							total: result.photos.total,
+							list: result.photos.photo
+						});
 					}
 				);
 			});
