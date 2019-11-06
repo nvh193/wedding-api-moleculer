@@ -24,6 +24,23 @@ module.exports = {
 			// Configures the Access-Control-Max-Age CORS header.
 			maxAge: 3600
 		},
+		rateLimit: {
+			// How long to keep record of requests in memory (in milliseconds).
+			// Defaults to 60000 (1 min)
+			window: 60 * 1000,
+
+			// Max number of requests during window. Defaults to 30
+			limit: 30,
+
+			// Set rate limit headers to response. Defaults to false
+			headers: true,
+
+			// Function used to generate keys. Defaults to:
+			key: req => {
+				return req.headers["x-forwarded-for"] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+			}
+			//StoreFactory: CustomStore
+		},
 		routes: [
 			{
 				path: "/api",
