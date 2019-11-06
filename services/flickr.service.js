@@ -84,7 +84,7 @@ module.exports = {
 				sefl.flickr.photosets.getList(
 					{
 						user_id: sefl.settings.flickrOptions.userId,
-						primary_photo_extras: "url_z, url_c, url_k"
+						primary_photo_extras: "url_z, url_c, url_k, url_n"
 					},
 					function(err, result) {
 						if (err) {
@@ -102,7 +102,7 @@ module.exports = {
 					{
 						user_id: sefl.settings.flickrOptions.userId,
 						photoset_id: params.photoset_id,
-						extras: "url_z, url_c, url_k",
+						extras: "url_z, url_c, url_k, url_n",
 						page: parseInt(params.page) || 0,
 						per_page: parseInt(params.limit) || 20
 					},
@@ -127,7 +127,7 @@ module.exports = {
 				sefl.flickr.photos.search(
 					{
 						user_id: sefl.settings.flickrOptions.userId,
-						extras: "url_z, url_c, url_k",
+						extras: "url_z, url_c, url_k, url_n",
 						page: parseInt(params.page) || 0,
 						per_page: parseInt(params.limit) || 20
 					},
