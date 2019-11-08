@@ -17,13 +17,17 @@
   "author": "",
   "devDependencies": {
     "eslint": "^6.1.0",
-    "moleculer-repl": "^0.5.7"
+    "moleculer-repl": "^0.6.1"
   },
   "dependencies": {
     "flickrapi": "^0.6.2",
     "ioredis": "^4.14.0",
+    "lodash": "^4.17.15",
     "moleculer": "^0.13.9",
+    "moleculer-db": "^0.8.3",
+    "moleculer-db-adapter-mongoose": "^0.8.3",
     "moleculer-web": "^0.8.5",
+    "mongoose": "^5.7.8",
     "redlock": "^4.0.0"
   },
   "engines": {

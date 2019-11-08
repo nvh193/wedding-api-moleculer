@@ -44,22 +44,35 @@ module.exports = {
 		routes: [
 			{
 				path: "/api",
-				whitelist: [
-					// Access any actions in 'posts' service
-					"gallery.*"
-				],
-				routes: [
-					{
-						mappingPolicy: "restrict",
-						aliases: {
-							// The `name` comes from named param.
-							// You can access it with `ctx.params.name` in action
-							"GET galleries": "gallery.fetch",
-							"GET galleries/getAll": "gallery.getAllPhotos",
-							"GET galleries/:photoset_id": "gallery.getPhotos"
-						}
+				// whitelist: [
+				// 	// Access any actions in 'posts' service
+				// 	"gallery.*",
+				// 	"attendance.*"
+				// ],
+				aliases: {
+					// The `name` comes from named param.
+					// You can access it with `ctx.params.name` in action
+					"GET photosets": "gallery.fetch",
+					"GET photos/getAll": "gallery.getAllPhotos",
+					"GET photosets/:photoset_id": "gallery.getPhotos",
+
+					// attendance
+					"POST attendances": "attendance.create",
+					"GET attendances": "attendance.list",
+					"DELETE attendances/:id": "attendance.remove"
+				},
+				// Disable to call not-mapped actions
+				mappingPolicy: "restrict",
+
+				// Parse body content
+				bodyParsers: {
+					json: {
+						strict: false
+					},
+					urlencoded: {
+						extended: false
 					}
-				]
+				}
 			}
 		]
 	}
