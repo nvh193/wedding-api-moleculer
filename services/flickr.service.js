@@ -1,6 +1,7 @@
 "use strict";
 
 const Flickr = require("flickrapi");
+const config = require("config");
 
 module.exports = {
 	name: "flickr",
@@ -9,15 +10,7 @@ module.exports = {
 	 * Service settings
 	 */
 	settings: {
-		flickrOptions: {
-			api_key: "94f47ecc37fdd1308d7a62debe33cfea",
-			secret: "dd68b60236e23492",
-			requestOptions: {
-				timeout: 20000
-				/* other default options accepted by request.defaults */
-			},
-			userId: "168534257@N08"
-		}
+		flickrOptions: config.flickr
 	},
 
 	/**

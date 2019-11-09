@@ -1,0 +1,10 @@
+{
+  "flickr": {
+    "api_key": "",
+    "secret": "",
+    "requestOptions": {
+      "timeout": 20000
+    },
+    "userId": ""
+  }
+}

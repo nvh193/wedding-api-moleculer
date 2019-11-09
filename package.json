@@ -20,6 +20,7 @@
     "moleculer-repl": "^0.6.1"
   },
   "dependencies": {
+    "config": "^3.2.4",
     "flickrapi": "^0.6.2",
     "ioredis": "^4.14.0",
     "lodash": "^4.17.15",
