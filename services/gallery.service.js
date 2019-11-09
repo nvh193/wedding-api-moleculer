@@ -18,13 +18,13 @@ module.exports = {
 	 */
 	actions: {
 		fetch: {
-			cache: false,
+			cache: true,
 			handler(ctx) {
 				return ctx.call("flickr.fetch", ctx.params);
 			}
 		},
 		getPhotos: {
-			cache: false,
+			cache: true,
 			params: {
 				photoset_id: "string"
 			},
@@ -33,11 +33,17 @@ module.exports = {
 			}
 		},
 		getAllPhotos: {
-			cache: false,
-			params: {
-			},
+			cache: true,
+			params: {},
 			handler(ctx) {
 				return ctx.call("flickr.getAllPhotos", ctx.params);
+			}
+		},
+		clearCache: {
+			handler() {
+				return this.broker.cacher.clean("gallery.**").then(() => {
+					return { clean: true };
+				});
 			}
 		}
 	},

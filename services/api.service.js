@@ -54,6 +54,7 @@ module.exports = {
 					// You can access it with `ctx.params.name` in action
 					"GET photosets": "gallery.fetch",
 					"GET photos/getAll": "gallery.getAllPhotos",
+					"GET photos/clear-cache": "gallery.clearCache",
 					"GET photosets/:photoset_id": "gallery.getPhotos",
 
 					// attendance
