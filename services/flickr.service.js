@@ -121,7 +121,6 @@ module.exports = {
 			});
 		},
 		getAllPhotos(params) {
-			console.log("TCL: getAllPhotos -> params", params);
 			const sefl = this;
 			return new Promise((resolve, reject) => {
 				sefl.flickr.photos.search(
