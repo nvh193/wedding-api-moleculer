@@ -101,7 +101,12 @@ module.exports = {
 					},
 					function(err, result) {
 						if (err) {
-							return reject(err);
+							return resolve({
+								limit: parseInt(params.limit) || 20,
+								page: parseInt(params.page) || 0,
+								total: 0,
+								list: []
+							});
 						}
 						return resolve({
 							limit: result.photoset.perpage,
@@ -131,7 +136,7 @@ module.exports = {
 							limit: result.photos.perpage,
 							page: result.photos.page,
 							total: result.photos.total,
-							list: result.photos.photo
+							list: result.photos.pages < result.photos.page ? [] : result.photos.photo
 						});
 					}
 				);
